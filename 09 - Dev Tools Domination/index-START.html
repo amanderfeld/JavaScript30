@@ -18,28 +18,72 @@
     }
 
     // Regular
+    console.log("hello");
 
     // Interpolated
+    console.log("hello I am a %s", "programmer");
 
     // Styled
+    console.log("%c I am some great text", "font-size:50px; background:red; text-shadow: 10px 10px 0 blue;");
 
     // warning!
+    console.warn("OH NOOO");
 
     // Error :|
+    console.error("ERROR FOUND");
 
     // Info
+    console.info("Crocodiles eat 3-4 people per year");
 
     // Testing
+    const p = document.querySelector("p");
+    
+    console.assert(p.classList.contains("ouch"), "Life is wrong");
 
     // clearing
+    console.clear();
 
     // Viewing DOM Elements
+    console.log(p);
+    console.dir(p);
+    
+    console.clear();
 
     // Grouping together
+    dogs.forEach(function(dog) {
+      console.groupCollapsed(`${dog.name}`);
+      console.log(`This is ${dog.name}`);
+      console.log(`${dog.name} is ${dog.age} years old`);
+      console.log(`${dog.name} is ${dog.age * 7} dog years old`);
+      console.groupEnd(`${dog.name}`);
+    });
 
     // counting
+    console.count("Drew");
+    console.count("Drew");
+    console.count("Lego");
+    console.count("Lego");
+    console.count("Drew");
+    console.count("Drew");
+    console.count("Lego");
+    console.count("Drew");
+    console.count("Drew");
+    console.count("Lego");
 
     // timing
+    console.time("fetching data");
+      
+      fetch("https://api.github.com/users/amanderfeld")
+        .then(function(data) {
+          return data.json();
+      })
+      .then(function(data) {
+        console.timeEnd("fetching data");
+        console.log(data);
+      });
+    
+    // table
+    console.table(dogs);
 
   </script>
 </body>
