@@ -104,6 +104,38 @@
   </div>
 
 <script>
+  const checkboxes = document.querySelectorAll('input');
+  let lastChecked = false;
+  
+  checkboxes.forEach(function(cb) {
+    cb.addEventListener('click', function(e) {
+      if (this.checked === true) {
+        if (e.shiftKey === true && lastChecked !== false) {
+          const cbs = Array.from(checkboxes),
+            lastIdx = cbs.indexOf(lastChecked),
+            curIdx = cbs.indexOf(this);
+          
+          checkBetween(checkboxes, Math.min(lastIdx, curIdx), Math.max(lastIdx, curIdx));
+        }
+        
+        lastChecked = this;
+      }
+      else {
+        lastChecked = false;
+      }
+    });
+  });
+  
+  function checkBetween(checkboxes, start, end) {
+    checkboxes.forEach(function(cb) {
+      const cbs = Array.from(checkboxes),
+        idx = cbs.indexOf(cb);
+        
+      if (idx >= start && idx <= end) {
+        cb.checked = true;
+      }
+    });
+  }
 </script>
 </body>
 </html>
