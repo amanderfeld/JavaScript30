@@ -8,13 +8,28 @@
 
   <script>
     // start with strings, numbers and booleans
+    let age = 100;
+    let age2 = age;
+    console.log(age, age2);
+    age = 200;
+    console.log(age, age2);
+    
+    let name = 'Drew';
+    let name2 = name;
+    console.log(name, name2);
+    name = 'Andrew';
+    console.log(name, name2);
 
     // Let's say we have an array
     const players = ['Wes', 'Sarah', 'Ryan', 'Poppy'];
 
     // and we want to make a copy of it.
+    const team = players;
+    console.log(players, team);
 
     // You might think we can just do something like this:
+    team[3] = 'Lux';
+    console.log(players, team);
 
     // however what happens when we update that array?
 
@@ -25,6 +40,11 @@
     // Why? It's because that is an array reference, not an array copy. They both point to the same array!
 
     // So, how do we fix this? We take a copy instead!
+    const team2 = players.slice();
+    const team3 = [].concat(players);
+    const team4 = [...players];
+    const team5 = Array.from(players);
+    console.log(players, team2, team3, team4, team5);
 
     // one day
 
@@ -37,15 +57,40 @@
     // The same thing goes for objects, let's say we have a person object
 
     // with Objects
+    const person = {
+      name: 'Drew Manderfeld',
+      age: 80
+    };
 
     // and think we make a copy:
+    const captain = person;
+    captain.number = 99;
+    console.log(person, captain);
 
     // how do we take a copy instead?
+    const captain2 = Object.assign({}, person, { status: 'active' });
+    console.log(person, captain2);
 
     // We will hopefully soon see the object ...spread
 
     // Things to note - this is only 1 level deep - both for Arrays and Objects. lodash has a cloneDeep method, but you should think twice before using it.
-
+    const drew = {
+      name: 'Drew',
+      age: 100,
+      social: {
+        twitter: '@DrewManderfeld',
+        facebook: 'none'
+      }
+    };
+    console.clear();
+    console.log(drew);
+    
+    const dev = Object.assign({}, drew);
+    dev.name = 'Sammy';
+    dev.social.facebook = 'SammySuits';
+    
+    console.log(drew, dev);
+    
   </script>
 
 </body>
